@@ -1,0 +1,20 @@
+program ProjectDemo3;
+
+uses
+  Vcl.Forms,
+  Unit1 in 'Unit1.pas' {MyForm},
+  Vcl.Themes,
+  Vcl.Styles,
+  Unit2 in 'Unit2.pas',
+  Unit3 in 'Unit3.pas' {AddForm};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  TStyleManager.TrySetStyle('Windows10 Dark');
+  Application.CreateForm(TMyForm, MyForm);
+  Application.CreateForm(TAddForm, AddForm);
+  Application.Run;
+end.

@@ -1,0 +1,17 @@
+unit Unit1;
+
+interface
+type
+{定义一个接口}
+  IUsb = interface
+    {CTRL+SHIRT+G}
+    ['{ED730D3E-D5C7-4C40-9FB9-5254BFD2CB93}']
+    {接口中只能写方法的声明}
+  end;
+  {定义一个类}
+  TComputor = class(IUsb)
+
+  end;
+implementation
+
+end.

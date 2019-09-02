@@ -1,0 +1,24 @@
+unit UnitDao;
+
+interface
+uses
+  Unit2,System.Generics.Collections;
+type
+  TDao=class
+    public
+      class procedure Add(Student:TStudent);
+  end;
+
+implementation
+var
+  // ³õÊ¼»¯ÈÝÆ÷Àà
+  Students:TDictionary<Integer,TStudent>;
+
+{ TDao }
+
+class procedure TDao.Add(Student: TStudent);
+begin
+
+end;
+
+end.

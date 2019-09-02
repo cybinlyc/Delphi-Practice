@@ -1,0 +1,17 @@
+unit uPerson;
+
+interface
+  type TPerson=class
+    public
+      procedure Talk;
+  end;
+implementation
+
+{ TPerson }
+
+procedure TPerson.Talk;
+begin
+
+end;
+
+end.

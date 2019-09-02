@@ -1,0 +1,34 @@
+unit UnitDao;
+
+interface
+uses
+  Vcl.Dialogs,Unit2,System.Generics.Collections;
+type
+  TDao=class
+    public
+      {该方法不用创建对象}
+      class procedure Add(Student:TStudent);
+  end;
+
+implementation
+var
+  // 初始化容器类
+  Students:TDictionary<string,TStudent>;
+
+{ TDao }
+
+class procedure TDao.Add(Student: TStudent);
+begin
+  if not Students.ContainsKey(Student.Id) then
+  begin
+    Students.Add(Student.Id,Student);
+  end
+  else
+  begin
+    ShowMessage('Id 重复');
+  end;
+end;
+initialization
+  Students:=TDictionary<string,TStudent>.Create();
+
+end.

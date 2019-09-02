@@ -1,0 +1,14 @@
+unit uTools;
+
+interface
+{声明区域}
+
+implementation
+{实现区域}
+
+initialization
+{初始化区域}
+
+finalization
+{销毁区域}
+end.

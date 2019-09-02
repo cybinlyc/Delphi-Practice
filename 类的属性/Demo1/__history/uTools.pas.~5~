@@ -1,0 +1,30 @@
+unit uTools;
+
+interface
+{声明区域,此处声明外部可以引用}
+
+uses
+  uDemo;
+
+type
+  TPerson = class
+    {字段，域}
+  private
+    Name: string;
+  public
+    property 
+  end;
+
+implementation
+{实现区域}
+
+initialization
+{初始化区域}
+
+
+
+finalization
+{销毁区域}
+
+end.
+

@@ -1,0 +1,93 @@
+program ProjectDemo1;
+
+{$APPTYPE CONSOLE}
+
+{$R *.res}
+
+uses
+  System.SysUtils;
+{
+  1、变量
+    1)声明
+    2)初始化
+  2、运输符
+  3、表达式
+}
+var
+  packPos:Int32;                  // 当前取值位置
+  datPackSize:Int32;              // 从包中取得的长度
+  ecgNumSize:Int32;
+
+  ecgDataBuf:array of Byte;         // 读取ecg文件的缓冲区
+  ecgFile:Textfile;                 // 定义一个文件变量
+  ecgStr:string;                    // 存储文件中的所有内容
+  ecgStrTmp:string;
+  strPos:Int32;                   // 访问的字符串位置
+  kk:Byte;
+  fileName:string;                  // 文件名称
+begin
+  {Writeln('请输入文件名称D:\xxx.txt');
+  Readln(fileName);}
+  //AssignFile(ecgFile,fileName); {将文件名与变量 F 关联}
+  AssignFile(ecgFile,'D:\ecgDataTest.txt'); {将文件名与变量 F 关联}
+  Reset(ecgFile);     {打开并读取文件 F }
+  // 读取文件中所有内容
+  while not eof(ecgFile) do
+  begin
+    Readln(ecgFile,ecgStr);           // 读取1行文本文件内容到ecgStr中
+  end;
+  // 设置数组长度为Length(ecgStr)
+  SetLength(ecgDataBuf,( Length(ecgStr) div 3 ) );
+  // 循环读取字符串内容
+  for strPos := 1 to Length(ecgStr) do
+  begin
+    if ecgStr[strPos]=' ' then
+    begin
+      ecgStrTmp:=Copy(ecgStr,strPos-2,2);
+      ecgDataBuf[strPos div 3]:= StrToInt('$'+ecgStrTmp);
+      {Write(IntToHex(ecgDataBuf[0]));
+      Write(' ');     }
+    end;
+  end;
+  // 循环打印ecgDataBuf
+  packPos := 1;
+  while ( packPos < Length(ecgDataBuf) ) do
+  begin
+    // 判读字头是否正确
+    ecgNumSize:=0;
+    if ( ecgDataBuf[packPos]= $7f )and(ecgDataBuf[packPos+1]= $7f) then
+    begin
+      datPackSize:=ecgDataBuf[packPos+2]+ecgDataBuf[packPos+3]*256;
+      if ecgDataBuf[packPos+5]=22 then      // 判断FMT格式    22数据包
+      begin
+
+      end
+      else if ecgDataBuf[packPos+5]=20 then   // 判断FMT格式  20空闲包
+      begin
+
+      end
+      else if ecgDataBuf[packPos+5]=21 then   // 判断FMT格式  21信息包
+      begin
+
+      end
+      else          // FMT格式错误
+      begin
+        Writeln('FMT error.');
+      end;
+    end
+    else          // 字头出错
+    begin
+      Writeln('Head error.');
+    end;
+    {Write(IntToHex(ecgDataBuf[packPos]));
+    Write(' ');}
+  end;
+
+  Writeln(Length(ecgDataBuf));
+  Writeln(Length(ecgStr));
+  CloseFile(ecgFile);
+  Readln;
+
+end.
+
+

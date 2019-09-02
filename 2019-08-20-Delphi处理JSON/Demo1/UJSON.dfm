@@ -1,0 +1,59 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 407
+  ClientWidth = 496
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object MyMemo: TMemo
+    Left = 0
+    Top = 152
+    Width = 505
+    Height = 257
+    TabOrder = 0
+  end
+  object btnMyDeSerier: TButton
+    Left = 24
+    Top = 80
+    Width = 75
+    Height = 25
+    Caption = #21453#24207#21015#21270
+    TabOrder = 1
+    OnClick = btnMyDeSerierClick
+  end
+  object btnMySerier: TButton
+    Left = 136
+    Top = 80
+    Width = 75
+    Height = 25
+    Caption = #24207#21015#21270
+    TabOrder = 2
+    OnClick = btnMySerierClick
+  end
+  object btnMy: TButton
+    Left = 256
+    Top = 80
+    Width = 75
+    Height = 25
+    Caption = 'btnMy'
+    TabOrder = 3
+    OnClick = btnMyClick
+  end
+  object btnMy2: TButton
+    Left = 384
+    Top = 80
+    Width = 75
+    Height = 25
+    Caption = 'btnMy2'
+    TabOrder = 4
+    OnClick = btnMy2Click
+  end
+end

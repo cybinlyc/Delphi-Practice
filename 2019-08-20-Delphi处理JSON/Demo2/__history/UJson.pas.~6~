@@ -1,0 +1,61 @@
+unit UJson;
+
+interface
+
+uses
+  System.JSON.Serializers,System.Generics.Collections,UStudent,Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    MyBtn1: TButton;
+    MyBtn2: TButton;
+    MyMemo: TMemo;
+    procedure MyBtn1Click(Sender: TObject);
+    procedure MyBtn2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.MyBtn1Click(Sender: TObject);
+var
+  listStu: TList<TStudent>;
+begin
+  {要先创建容器来存储对象}
+  listStu:=TList<TStudent>.Create;
+  {添加对象到容器中}
+  listStu.Add(TStudent.Create('Gomez','Addams',40));
+  listStu.Add(TStudent.Create('Gomez','Addams',41));
+  {序列化，将TList容器对象转换未JSON格式字符串}
+  {TList里面有连个对象，所以序列化处理的字符串每个对象应该由花括号括起来，
+   而两个对象应该组成了数组，由中括号括起来}
+  MyMemo.Text:=TJsonSerializer.Create.Serialize<TList<TStudent>>(listStu);
+  {反序列化得到TList<TStudent>的容器}
+  MyMemo.Text:=MyMemo.Text+TJsonSerializer.Create.Deserialize<TList<TStudent>>(MyMemo.Text)[0].FirstName;
+end;
+
+procedure TForm1.MyBtn2Click(Sender: TObject);
+var
+  Serializer: TJsonSerializer;
+  Persion: TStudent;
+  jsonString: string;
+  List: TObjectList<TStudent>;
+begin
+  jsonString := '{"name":"张三", "age":19, "like":["游戏","足球"]}';
+  Serializer:=TJsonSerializer.Create;
+  List:=TObjectList<TStudent>.Create();
+  List.Add(TStudent.Create('张','三',30,['足球','羽毛球']));
+  //List:=Serializer.Deserialize<TObjectList<TStudent>>(jsonString);
+  //MyMemo.Text:=List[0].FirstName;
+end;
+
+end.

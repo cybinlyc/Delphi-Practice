@@ -1,0 +1,57 @@
+unit UnitDemo3;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+
+type
+  TForm1 = class(TForm)
+    btnRead: TButton;
+    procedure btnReadClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+  // 函数声明
+  function MyFileRead(Path:string;Num:Integer): TBytes;
+
+var
+  Form1: TForm1;
+
+implementation
+  // 函数实现
+  function MyFileRead(path:string;num:Integer): TBytes;
+  var
+    ReadFileStream:TFileStream;
+  begin
+    Result := nil;
+    if (not FileExists(path)) then
+    Exit;
+    // 设定TBytes数组长度
+    SetLength(Result, Num);
+    try
+      // 只读方式打开
+      ReadFileStream := TFileStream.Create(path, fmOpenRead);
+      // 读num个字节
+      ReadFileStream.Read(Result, num);
+    finally
+      // 释放资源
+      FreeAndNil(ReadFileStream);
+    end;
+  end;
+
+{$R *.dfm}
+
+procedure TForm1.btnReadClick(Sender: TObject);
+var
+  ReadFileStream:TFileStream;
+begin
+
+end;
+
+end.

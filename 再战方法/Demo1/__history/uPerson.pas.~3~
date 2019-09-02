@@ -1,0 +1,36 @@
+unit uPerson;
+
+interface
+  type TAnimal=class
+    public
+      procedure Talk;
+      function Run():Integer;virtual;
+  end;
+  type TDog=class(TAnimal)
+     public
+     function Run():Integer;
+  end;
+
+implementation
+
+{ TPerson }
+
+function TAnimal.Run: Integer;
+begin
+  {一般情况下，父类的虚方法有一个空实现}
+  {虚方法一般表示一个类具有这个功能，功能实现根据不同子类有不同实现方法，虚方法是留给子类实现的具体功能}
+end;
+
+procedure TAnimal.Talk;
+begin
+  Writeln('Talk');
+end;
+
+{ TDog }
+
+function TDog.Run: Integer;
+begin
+  Writeln('四条腿跑');
+end;
+
+end.

@@ -1,0 +1,64 @@
+﻿program ProjectDemo1;
+
+{$APPTYPE CONSOLE}
+
+{$R *.res}
+
+uses
+  System.SysUtils;
+  {子界类型定义
+    (1)、定义格式 type 子界名称=上界..下界；
+    (2)、子界要求上界和下界必须是有序的数据类型 整型，字符，枚举类型
+    (3)、子界的上界必须大于下界；
+  }
+
+type
+  {枚举类型}
+  //EColor = (RED, GREEN, BLUE);
+  {子界}
+
+  {TSubBoundNum = 1..10;
+
+  TSubBoundChar = 'a'..'z';
+
+  TSubBoundEnum = EColor.RED..EColor.BLUE; }
+  {给出一个年份，打印出平年还是闰年，每个月的天数和所属季节}
+  {子界：月份}
+  TSubBoundMonth = 1..12;             // 限制月份取值1..12
+  {枚举：季节}
+
+  ESeason = (SPRING, SUMMER, AUTUMN, WINTER);
+
+var
+  Season: ESeason;
+  Month: TSubBoundMonth;
+  Year: Integer;
+  IsLeapYear:Boolean;
+begin
+  {writeln(Low(TSubBoundNum));
+  writeln(Low(TSubBoundChar));
+  Writeln(Ord(Low(TSubBoundEnum)));}
+  Writeln('请输入一个年份，格式为YYYY');
+  Readln(Year);
+  Writeln('请输入一个月份');
+  IsLeapYear:=False;    // 默认为平年
+  // 1.年份能被4整除 2.年份能被100整除，需被400整除
+  if Year mod 4 = 0 then
+  begin
+    if Year mod 100 = 0 then
+    begin
+      if Year mod 400 = 0 then
+      begin
+        Writeln(Year,'年是闰年');
+        IsLeapYear:=True;
+      end;
+    end
+    else
+    begin
+      Writeln(Year,'年是闰年');
+      IsLeapYear:=True;
+    end;
+  end;
+  Readln;
+end.
+

@@ -1,0 +1,81 @@
+unit UStudent;
+
+interface
+uses
+  System.SysUtils;
+type
+  TStudent = class
+  private
+    FFirstName: string;
+    FSecondName: string;
+    FAge: Integer;
+    FLike: TArray<string>;
+    procedure SetAge(const Value: Integer);
+    procedure SetFirstName(const Value: string);
+    procedure SetSecondName(const Value: string);
+    procedure SetFlike(const Value: TArray<string>);
+  public
+    property FirstName: string read FFirstName write SetFirstName;
+    property SecondName: string read FSecondName write SetSecondName;
+    property Age: Integer read FAge write SetAge;
+    property Like: TArray<string> read FLike write SetFlike;
+    constructor Create(FFirstName: string; FSecondName: string; FAge: Integer); overload;
+    constructor Create(FFirstName: string; FSecondName: string; FAge: Integer;FLike:TArray<string>); overload;
+  end;
+
+implementation
+
+{ TStudent }
+
+constructor TStudent.Create(FFirstName, FSecondName: string; FAge: Integer);
+begin
+  Self.FFirstName := FFirstName;
+  Self.FSecondName := FSecondName;
+  Self.FAge := FAge;
+end;
+
+constructor TStudent.Create(FFirstName, FSecondName: string; FAge: Integer; FLike: TArray<string>);
+var
+  NuM:Integer;
+begin
+  Self.FFirstName := FFirstName;
+  Self.FSecondName := FSecondName;
+  Self.FAge := FAge;
+  SetLength(Self.FLike,10);
+  for Num := Low(FLike) to High(FLike) do
+  begin
+    if Num > 9 then
+    begin
+      Self.FLike[Num] := FLike[Num];
+      Break;
+    end;
+  end;
+end;
+
+procedure TStudent.SetAge(const Value: Integer);
+begin
+  FAge := Value;
+end;
+
+procedure TStudent.SetFirstName(const Value: string);
+begin
+  FFirstName := Value;
+end;
+
+procedure TStudent.SetFlike(const Value: TArray<string>);
+var
+  Num: Integer;
+begin
+  for Num := Low(Value) to High(Value) do
+  begin
+    FLike[Num] := Value[Num];
+  end;
+end;
+
+procedure TStudent.SetSecondName(const Value: string);
+begin
+  FSecondName := Value;
+end;
+
+end.
+

@@ -1,0 +1,48 @@
+unit UStudent;
+
+interface
+uses
+  System.SysUtils;
+type
+  TStudent = class
+  private
+    FFirstName: string;
+    FSecondName: string;
+    FAge: Integer;
+    procedure SetAge(const Value: Integer);
+    procedure SetFirstName(const Value: string);
+    procedure SetSecondName(const Value: string);
+  public
+    property FirstName: string read FFirstName write SetFirstName;
+    property SecondName: string read FSecondName write SetSecondName;
+    property Age: Integer read FAge write SetAge;
+    constructor Create(FFirstName: string; FSecondName: string; FAge: Integer); overload;
+     end;
+
+implementation
+
+{ TStudent }
+
+constructor TStudent.Create(FFirstName, FSecondName: string; FAge: Integer);
+begin
+  Self.FFirstName := FFirstName;
+  Self.FSecondName := FSecondName;
+  Self.FAge := FAge;
+end;
+
+procedure TStudent.SetAge(const Value: Integer);
+begin
+  FAge := Value;
+end;
+
+procedure TStudent.SetFirstName(const Value: string);
+begin
+  FFirstName := Value;
+end;
+procedure TStudent.SetSecondName(const Value: string);
+begin
+  FSecondName := Value;
+end;
+
+end.
+

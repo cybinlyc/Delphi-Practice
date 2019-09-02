@@ -1,0 +1,91 @@
+program ProjectDemo1;
+
+{$APPTYPE CONSOLE}
+
+{$R *.res}
+
+uses
+  System.SysUtils,
+  uExterns in 'uExterns.pas';
+
+{*------------------------------------------------------------------------------
+  派生（继承）
+    派生是指类和类之间的关系
+    继承更多是指对象和对象之间的关系
+  特点
+    1、提高代码的利用率
+    2、一旦产生了派生关系之后，他们就具备了多态的特性
+    3、Delphi是单继承，但是可以多层继承
+  继承中的构造方法
+    1、定义
+  继承中的访问权限
+-------------------------------------------------------------------------------}
+
+type
+  {定义一个类}
+  TAnimal = class
+  private
+    {定义字段}
+    FHeight:Integer;
+    function GetHeight: Integer;
+    procedure SetHeight(const Value: Integer);
+  public
+    {定义构造方法}
+    constructor Create();
+    {定义属性}
+    property _FHeight:Integer read GetHeight write SetHeight;
+  end;
+  {定义一个派生类,TDog继承于TAnimal}
+
+  TDog = class(TAnimal)
+  public
+    constructor Create();
+  end;
+
+  TCat = class(TAnimal)
+  public
+    constructor Create();
+  end;
+{ TAnimal }
+
+{定义一个构造方法}
+
+constructor TAnimal.Create;
+begin
+  {类，字段的初始化}
+  Writeln('TAnimal');
+end;
+
+{ TDog }
+
+constructor TDog.Create;
+begin
+  Writeln('TDog');
+end;
+
+{ TCat }
+
+constructor TCat.Create;
+begin
+  Writeln('TCat');
+end;
+var
+  Dog:TDog;
+  Cat:TCat;
+function TAnimal.GetHeight: Integer;
+begin
+  Result:=Self.FHeight;
+end;
+
+procedure TAnimal.SetHeight(const Value: Integer);
+begin
+  Self.FHeight:=Value;
+end;
+
+begin
+  Dog:=TDog.Create;
+  Cat:=TCat.Create;
+  Dog.FHeight:=100;
+  Readln;
+end.
+

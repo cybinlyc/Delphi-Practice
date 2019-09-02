@@ -1,0 +1,57 @@
+unit uExterns;
+
+interface
+
+type
+  {定义一个类}
+  TAnimal = class
+  private
+    {定义字段}
+    FHeight: Integer;
+    function GetHeight: Integer;
+    procedure SetHeight(const Value: Integer);
+  public
+    {定义构造方法}
+    constructor Create();
+    {定义属性}
+    property _FHeight: Integer read GetHeight write SetHeight;
+  end;
+  {定义一个派生类,TDog继承于TAnimal}
+
+  TDog = class(TAnimal)
+  public
+    constructor Create();
+  end;
+
+  TCat = class(TAnimal)
+  public
+    constructor Create();
+  end;
+
+implementation
+ { TAnimal }
+
+{定义一个构造方法}
+
+constructor TAnimal.Create;
+begin
+  {类，字段的初始化}
+  Writeln('TAnimal');
+end;
+
+{ TDog }
+
+constructor TDog.Create;
+begin
+  Writeln('TDog');
+end;
+
+{ TCat }
+
+constructor TCat.Create;
+begin
+  Writeln('TCat');
+end;
+
+end.
+

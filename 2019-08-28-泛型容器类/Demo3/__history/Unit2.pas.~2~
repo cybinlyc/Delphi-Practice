@@ -1,0 +1,29 @@
+unit Unit2;
+
+interface
+type
+  TStudent = class
+    private
+      FName:string;
+      FAge:Integer;
+    procedure SetName(const Value: string);
+    procedure SetAge(const Value: Integer);
+    public
+      property Name:string  read FName write SetName;
+      property Age:Integer  read FAge write SetAge;
+  end;
+implementation
+
+{ TStudent }
+
+procedure TStudent.SetAge(const Value: Integer);
+begin
+  FAge := Value;
+end;
+
+procedure TStudent.SetName(const Value: string);
+begin
+  FName := Value;
+end;
+
+end.

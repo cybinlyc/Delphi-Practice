@@ -1,0 +1,30 @@
+unit Unit1;
+
+interface
+
+uses
+  System.Generics.Collections,Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TMyForm = class(TForm)
+    btnAdd: TButton;
+    btnDelete: TButton;
+    btnFind: TButton;
+    btnUpdate: TButton;
+    MyMemo: TMemo;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  MyForm: TMyForm;
+  {全局容器，存放学生信息}
+  StudentDictionary:TDiction
+implementation
+
+{$R *.dfm}
+
+end.

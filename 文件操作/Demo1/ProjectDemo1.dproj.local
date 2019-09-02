@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2019/07/10 19:14:45.000.287,=D:\5、私人学习\DelphiWorkSpace\Unit1.pas</Transaction>
+    <Transaction>2019/07/10 19:17:25.000.676,D:\5、私人学习\DelphiWorkSpace\Unit1.dfm=D:\5、私人学习\DelphiWorkSpace\文件操作\Demo1\Demo1.dfm</Transaction>
+    <Transaction>2019/07/10 19:17:25.000.676,D:\5、私人学习\DelphiWorkSpace\Unit1.pas=D:\5、私人学习\DelphiWorkSpace\文件操作\Demo1\Demo1.pas</Transaction>
+    <Transaction>2019/07/10 19:17:35.000.691,D:\5、私人学习\DelphiWorkSpace\Project1.dproj=D:\5、私人学习\DelphiWorkSpace\文件操作\Demo1\ProjectDemo1.dproj</Transaction>
+    <Transaction>2019/07/10 19:38:44.000.804,D:\5、私人学习\DelphiWorkSpace\文件操作\Demo1\Demo1.pas=D:\5、私人学习\DelphiWorkSpace\文件操作\Demo1\UnitDemo1.pas</Transaction>
+    <Transaction>2019/07/10 19:38:44.000.804,D:\5、私人学习\DelphiWorkSpace\文件操作\Demo1\Demo1.dfm=D:\5、私人学习\DelphiWorkSpace\文件操作\Demo1\UnitDemo1.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

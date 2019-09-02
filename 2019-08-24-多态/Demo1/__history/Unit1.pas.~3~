@@ -1,0 +1,18 @@
+unit Unit1;
+
+interface
+
+type
+  IEat = interface
+  end;
+
+  TAnimal = class(TInterfacedObject)
+  end;
+
+  TDog = class(TAnimal, IEat)
+  end;
+
+implementation
+
+end.
+

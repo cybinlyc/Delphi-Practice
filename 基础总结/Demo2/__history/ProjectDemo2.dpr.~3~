@@ -1,0 +1,73 @@
+program ProjectDemo2;
+
+{$APPTYPE CONSOLE}
+
+{$R *.res}
+
+uses
+  System.SysUtils;
+type
+  {定义一个学生的记录类型}
+  TStudent = record
+    Name:string;
+    Id:Integer;
+  end;
+  {数组，存储信息}
+  TStudentList=array of TStudent;
+var
+  StudentList:TStudentList;
+{选择菜单}
+procedure ShowMenu;
+begin
+  Writeln('');
+  Writeln('*********学生信息管理系统***********');
+  Writeln('1、添加信息');
+  Writeln('2、删除信息');
+  Writeln('3、查询信息');
+  Writeln('4、修改信息');
+  Writeln('************************************');
+end;
+
+{用户选择功能}
+procedure UserChoose;
+var
+  UserChooseIndex:Integer;
+begin
+  Writeln('请输入您要选择的功能:');
+  {获取用户输入的编号}
+  Readln(UserChooseIndex);
+  {判断用户输入的编号}
+  case UserChooseIndex of
+    1:
+    begin
+      Writeln('您选择了添加功能');
+    end;
+    2:
+    begin
+      Writeln('您选择了删除功能');
+    end;
+    3:
+    begin
+      Writeln('您选择了查询功能');
+    end;
+    4:
+    begin
+      Writeln('您选择了修改功能');
+    end;
+    else
+    begin
+      Writeln('输入有误');
+    end;
+  end;
+end;
+
+begin
+  {初始化赋值}
+  StudentList:=[];
+  while True do
+  begin
+  ShowMenu();
+  UserChoose();
+  end;
+  Readln;
+end.

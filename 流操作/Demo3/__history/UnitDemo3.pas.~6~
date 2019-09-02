@@ -1,0 +1,102 @@
+unit UnitDemo3;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+
+type
+  TForm1 = class(TForm)
+    btnRead: TButton;
+    mmoDisplay: TMemo;
+    procedure btnReadClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+  // 函数声明
+  function MyFileRead(Path:string;Num:Integer;readPos:Integer): TBytes;
+  function MyEcgCaculation(ecgBuff:TBytes): Integer;
+var
+  Form1: TForm1;
+const
+  SOURCE_PATH = 'D:\ecgTest.txt';
+  NUM_READ:Integer = 10000;
+implementation
+  // 函数实现
+  function MyFileRead(path:string;num:Integer;readPos:Integer): TBytes;
+  var
+    ReadFileStream:TFileStream;
+  begin
+    Result := nil;
+    // 文件不存在则结束读取
+    if (not FileExists(path)) then
+      Exit;
+    try
+      // 只读方式打开
+      ReadFileStream := TFileStream.Create(path, fmOpenRead);
+      // 判断剩下的字节数目是否足够
+      if( ReadFileStream.Size-readPos < NUM_READ ) then
+      begin
+        Num := ReadFileStream.Size-readPos;
+      end;
+      // 设定TBytes数组长度
+    SetLength(Result, Num);
+      // 读num个字节
+      ReadFileStream.Read(Result, num);
+    finally
+      // 释放资源
+      FreeAndNil(ReadFileStream);
+    end;
+  end;
+
+  function MyEcgCaculation(ecgBuff:TBytes): Integer;
+  var
+    EcgReadPosition:Integer;// ecg数据读取位置
+  begin
+    { 判断数据 }
+    if (ecgBuff[EcgReadPosition+0]=$7f) and (ecgBuff[EcgReadPosition+1]=$7f) then  
+    begin
+    
+    end;
+  end;
+
+{$R *.dfm}
+
+procedure TForm1.btnReadClick(Sender: TObject);
+var
+  ReadPosition:Integer;   // 读取位置
+  EcgReadPosition:Integer;// ecg数据读取位置
+  ReadNum:Integer;        // 读取个数
+  ecgBuf:TBytes;          // Byte数组
+  cnt:Integer;            
+begin
+  ReadPosition:=0;        // 初始化读取初始位置
+  EcgReadPosition:=0;     // 初始化Ecg读取初始位置
+  readNum:=NUM_READ;      // 初始化初始读取个数
+  try
+    while True do
+    begin
+    
+        // 读出数据到ecgBuf
+        ecgBuf:=MyFileRead(SOURCE_PATH,ReadNum,ReadPosition);
+        // 更新读取位置
+        Inc(ReadPosition,Length(ecgBuf));
+        
+        // 判断数据已全部读取完成
+        if Length(ecgBuf) < NUM_READ then
+        begin
+          Break;
+        end;
+    end;
+  finally
+  end;
+  // DEBUG Message
+  ShowMessage(IntToStr(ReadPosition));
+end;
+
+end.

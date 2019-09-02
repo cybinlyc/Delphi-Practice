@@ -1,0 +1,41 @@
+unit UJson;
+
+interface
+
+uses
+  System.JSON.Serializers,System.Generics.Collections,UStudent,Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    MyBtn1: TButton;
+    MyBtn2: TButton;
+    MyMemo: TMemo;
+    procedure MyBtn1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.MyBtn1Click(Sender: TObject);
+var
+  listStu: TList<TStudent>;
+begin
+  {要先创建容器来存储对象}
+  listStu:=TList<TStudent>.Create;
+  {添加对象到容器中}
+  listStu.Add(TStudent.Create('Gomez','Addams',40));
+  listStu.Add(TStudent.Create('Gomez','Addams',41));
+  {序列化，将TList容器对象转换未JSON格式字符串}
+
+end;
+
+end.

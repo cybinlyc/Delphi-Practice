@@ -1,0 +1,20 @@
+program ProjectDemo1;
+
+{$APPTYPE CONSOLE}
+
+{$R *.res}
+
+uses
+  System.SysUtils;
+{
+  1、变量
+    1)声明
+    2)初始化
+  2、运输符
+  3、表达式
+}
+var
+  packPos:Integer;          // 当前取值位置
+begin
+
+end.

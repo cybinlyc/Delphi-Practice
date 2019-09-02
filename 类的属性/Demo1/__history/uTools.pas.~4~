@@ -1,0 +1,25 @@
+unit uTools;
+
+interface
+{声明区域}
+uses
+  uDemo;
+var
+  Name: string;    // 外部文件可以引用
+
+implementation
+{实现区域}
+
+var
+  Age: Integer;    // 只能本文件使用
+
+initialization
+{初始化区域}
+  Name := '陈怡彬';
+  Age := 30;
+
+finalization
+{销毁区域}
+
+end.
+

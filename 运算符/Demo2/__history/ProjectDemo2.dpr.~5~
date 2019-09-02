@@ -1,0 +1,14 @@
+program ProjectDemo2;
+
+{$APPTYPE CONSOLE}
+
+{$R *.res}
+
+uses
+  System.SysUtils;
+{
+  1、运算符   +,-,*,/(除不进),div（整除）,mod（取模）
+}
+begin
+ 
+end.

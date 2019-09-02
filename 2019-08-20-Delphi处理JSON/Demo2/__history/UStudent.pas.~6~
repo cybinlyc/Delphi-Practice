@@ -1,0 +1,57 @@
+unit UStudent;
+
+interface
+
+type
+  TStudent = class
+  private
+    FFirstName: string;
+    FSecondName: string;
+    FAge: Integer;
+    FLike:array of string;
+    procedure SetAge(const Value: Integer);
+    procedure SetFirstName(const Value: string);
+    procedure SetSecondName(const Value: string);
+    procedure SetFLike(const var Value: array of string);
+  public
+    property FirstName: string read FFirstName write SetFirstName;
+    property SecondName: string read FSecondName write SetSecondName;
+    property Age: Integer read FAge write SetAge;
+    property Like:array of string  read FLike write SetFLike;
+    constructor Create(FFirstName: string; FSecondName: string; FAge: Integer); overload;
+
+  end;
+
+implementation
+
+{ TStudent }
+
+constructor TStudent.Create(FFirstName, FSecondName: string; FAge: Integer);
+begin
+  Self.FFirstName := FFirstName;
+  Self.FSecondName := FSecondName;
+  Self.FAge := FAge;
+end;
+
+procedure TStudent.SetAge(const Value: Integer);
+begin
+  FAge := Value;
+end;
+
+procedure TStudent.SetFirstName(const Value: string);
+begin
+  FFirstName := Value;
+end;
+
+procedure TStudent.SetFLike(const var Value: array of string);
+begin
+  FLike := Value;
+end;
+
+procedure TStudent.SetSecondName(const Value: string);
+begin
+  FSecondName := Value;
+end;
+
+end.
+

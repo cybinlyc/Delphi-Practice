@@ -1,0 +1,54 @@
+unit Unit1;
+
+interface
+
+uses
+  Uadd, Unit2, System.Generics.Collections, Winapi.Windows, Winapi.Messages,
+  System.SysUtils, System.Variants, System.Classes, Vcl.Graphics, Vcl.Controls,
+  Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TMyForm = class(TForm)
+    btnAdd: TButton;
+    btnDelete: TButton;
+    btnFind: TButton;
+    btnUpdate: TButton;
+    MyMemo: TMemo;
+    procedure FormCreate(Sender: TObject);
+    procedure btnAddClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  MyForm: TMyForm;
+  {全局容器，存放学生信息}
+{  StudentDictionary: TDictionary<Integer, TStudent>;              }
+
+implementation
+
+{$R *.dfm}
+
+procedure TMyForm.btnAddClick(Sender: TObject);
+var
+  FormAdd: TAddForm;
+begin
+  FormAdd := TAddForm.Create(Self);
+  FormAdd.Left := Self.Left + 50;
+  FormAdd.Top := Self.Top +  15;
+  FormAdd.ShowModal;
+
+  //AddForm:=TAddForm.Create(Self);
+  //AddForm.ShowModal;
+end;
+
+procedure TMyForm.FormCreate(Sender: TObject);
+begin
+  {StudentDictionary := TDictionary<Integer, TStudent>.Create();}
+
+end;
+
+end.
+

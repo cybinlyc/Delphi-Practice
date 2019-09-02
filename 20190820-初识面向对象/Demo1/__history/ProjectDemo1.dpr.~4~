@@ -1,0 +1,44 @@
+program ProjectDemo1;
+
+{$APPTYPE CONSOLE}
+
+{$R *.res}
+
+uses
+  System.SysUtils;
+{*------------------------------------------------------------------------------
+  面向过程：强调的是功能行为(函数/方法),C语言就是面向过程的语言
+  面向对象：将功能封装进对象，强调具备了功能的对象
+
+  类和对象
+  简单来说，类就是将某一类事物的所有共同点抽离出来，形成一个模板，而这个模板我们在编程中使用。
+  对象是按照模板生成(制造)出来的一个具体的事物。
+
+  类和类之间的关系
+  抽象：将同类事物向上抽象的过程。
+  派生(继承)：我们编程之中说的是类和类之间的关系，称之为派生更为合适。
+
+  封装：将不必要的细节隐藏起来。
+
+  多态：一类事物以多个形态存在。
+-------------------------------------------------------------------------------}
+type
+  TPerson = class
+    Name:string;
+    age:Integer;
+  end;
+  TStudent = class(TObject)
+  private
+    { private declarations }
+  protected
+    { protected declarations }
+  public
+    name:string;
+    { public declarations }
+
+  published
+    { published declarations }
+  end;
+begin
+
+end.
